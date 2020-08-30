@@ -13,23 +13,26 @@
 
 <body>
 
-<div class="jumbotron">
-    <h1 class="display-4">Total number of cases as of today...</h1>
-    <p th:text="${totalCases}"></p>
+<div class="container"><!--Center align the content-->
+    <div class="jumbotron">
+        <h1 class="display-4">Total number of cases as of today...</h1>
+        <p th:text="${totalCases}"></p>
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th>Province</th>
+            <th>State</th>
+            <th>Total number of cases</th>
+            <th>Change</th>
+        </tr>
+        <tr th:each="locationStat : ${modelAttrib}">
+            <td th:text="${locationStat.province}" ></td>
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.totalCases}"></td>
+            <td th:text="${locationStat.caseDelta}"></td>
+        </tr>
+    </table>
 </div>
-
-<table class="list-group">
-    <tr class="list-group-item d-flex justify-content-between align-items-center">
-        <th>Province</th>
-        <th>State</th>
-        <th>Total number of cases</th>
-    </tr>
-    <tr th:each="locationStat : ${modelAttrib}" class="list-group-item d-flex justify-content-between align-items-center">
-        <td th:text="${locationStat.province}" ></td>
-        <td th:text="${locationStat.state}"></td>
-        <td th:text="${locationStat.totalCases}" class="badge badge-primary badge-pill"></td>
-    </tr>
-</table>
 
 </body>
 

@@ -103,3 +103,16 @@ Now, onwards bootstrap :)
 - Till now, put the data inside the modal into table, use some bootstrap list group class to beautify the data, the list group is using a pill to display the data.
 - Use Jumbotron to get the total number of cases.
 - SWITCHING ON NEW BRANCH to use container.
+
+Now, using container, and creating a diff on previous cases as well
+- container class -> center aligns it
+- For the per day diffs, sub pre day cases -> all from pojo
+- Get new var in pojo to indicate the diff in cases from previous day, calc it while creating list elements.
+- And in hopme.html, use it - done
+
+Now, to make the table displayed a little nicer
+- Encasp the entire table and jumbotron in a div container class to even spacing
+- Bootstrap - search table
+- Use the table class
+
+__ DONE __ :)

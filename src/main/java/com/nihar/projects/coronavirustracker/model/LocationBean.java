@@ -8,6 +8,15 @@ public class LocationBean {
     private String province;
     private String state;
     private int totalCases;
+    private int caseDelta;
+
+    public int getCaseDelta() {
+        return caseDelta;
+    }
+
+    public void setCaseDelta(int caseDelta) {
+        this.caseDelta = caseDelta;
+    }
 
     public String getProvince() {
         return province;

@@ -6,6 +6,7 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -78,9 +79,13 @@ public class CoronaVirusDataService {
         List<LocationBean> newStats = new ArrayList<>();
         for (CSVRecord csvRecord : csvRecords) {
             LocationBean locationBean = new LocationBean();
-            locationBean.setProvince(csvRecord.get(0));
+            String province =  StringUtils.isEmpty(csvRecord.get(0)) ? "-" : csvRecord.get(0);
+            locationBean.setProvince(province);
             locationBean.setState(csvRecord.get(1));
-            locationBean.setTotalCases(Integer.parseInt(csvRecord.get(csvRecord.size() - 1)));
+            int currentTotalCases = Integer.parseInt(csvRecord.get(csvRecord.size() - 1));
+            int delta = currentTotalCases - Integer.parseInt(csvRecord.get(csvRecord.size() - 2));
+            locationBean.setCaseDelta(delta);
+            locationBean.setTotalCases(currentTotalCases);
             newStats.add(locationBean);
         }
         this.allStats = newStats;
