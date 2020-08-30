@@ -33,6 +33,7 @@ Data cleanup
 - Using header names - get the values
 
 Cronning
+- Spring will call the method
 - @Scheduled on the method to run
 	- Specify the delay in execution of a cron expression
 	eg - Scheduled(cron = "* * * * * *") -> sec min hr day mon year
@@ -44,3 +45,9 @@ Issue
 	@Scheduled(cron = "5 * * * * *")
 	-> Correct cron exp shd be @Scheduled(cron = "0/5 * * * * *")
 	Run from 0 in increments of 5
+
+- Get the data from the csv parsed via cron, and populate (for time being) in an instance variable which is a list<LocationBasedCases>
+- Create a pojo with instance vars
+- Pop then with data(need only 3 columns - province, state, and current cases)
+- Create a list and then assig that list to the instance list -> If a user req while instance list is being gen - error - hence create a instance list from local one.
+
