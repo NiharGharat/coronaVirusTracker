@@ -1,0 +1,22 @@
+https://www.youtube.com/watch?v=8hjNG9GZGnQ
+
+thymeleaf
+- Templating engine to generate html responses
+
+java version 12
+- > I already have 13
+
+- a service will go and get request to the url
+https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
+
+- Http request and response
+Used builders, have a look
+
+- Now, need to tell spring to execute a method when the application starts:
+	- @Service to service class
+	Make the class a spring service class
+
+	- @PostConstruct
+	When u construct the class as a service - execute the method of our data
+
+
