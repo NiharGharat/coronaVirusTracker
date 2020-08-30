@@ -1,6 +1,9 @@
 package com.nihar.projects.coronavirustracker.controller;
 
+import com.nihar.projects.coronavirustracker.services.CoronaVirusDataService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /*
@@ -12,11 +15,15 @@ Normal controller   -> Will give a whitelabel error page if we fail to map the r
 @Controller
 public class HomeController {
 
+    @Autowired
+    private CoronaVirusDataService coronaVirusDataService;
+
     /*
     Will map to a <returnVar>.html file
      */
     @GetMapping(value = "/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("modelAttrib", coronaVirusDataService.getAllStats());
         return "home";
     }
 

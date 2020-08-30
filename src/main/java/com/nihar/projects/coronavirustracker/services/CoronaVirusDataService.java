@@ -32,8 +32,12 @@ public class CoronaVirusDataService {
      */
     private List<LocationBean> allStats = new ArrayList<>();
 
+    public List<LocationBean> getAllStats() {
+        return allStats;
+    }
+
     @PostConstruct
-    @Scheduled(cron = "5 * * * * *")
+    @Scheduled(cron = "5 10 * * * *")
     private void getDataFromGithub() throws URISyntaxException, IOException, InterruptedException {
         /*
         For cron exp checking in time delays

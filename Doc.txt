@@ -57,4 +57,26 @@ Now, create a controller to go to create a web api
 	- unable to see template folder -> switch to package view
 - Create a normal controller - map a url - return String templateName
 - In controller -> response - template.html file => by thymeleaf
-- 
+
+Now, adding the model inside the response(Model)**
+- Accept the model - add attribute - access it from thymeleaf syntax
+eg - 
+@GetMapping(value = "/")
+public String home(Model model) {
+        model.addAttribute("testName", "actualValue");
+        return "home";
+    }
+
+home.html
+<p th:text="#{testName}">Welcome to our grocery store!</p>
+
+- Issue
+- en_GB ...
+	-> <p th:text="${testName}"></p>
+- AutoWire the service instance in controller
+- Get the List and put it the model - access same way
+- As for rendering -> right now - it will just show list a java array, for correct iterating through the info, use thymeleafy docs - use the iteration section, https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html
+
+Issue
+	- Not able to display the numbers -> there was a boolean operator in copied section - remove it
+

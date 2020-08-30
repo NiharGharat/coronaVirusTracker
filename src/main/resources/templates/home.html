@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html xmlns:th="http://www.thymeleaf.org">
+<!--Tymeleaf namesapce-->
 <head>
-    <meta charset="UTF-8">
-    <title>Corona virus tracker</title>
+    <title>Corona Virus Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
 </head>
-<!--Thymeleaf is correctly doing the mapping-->
+
 <body>
-    <h1>Corona virus tracker</h1>
+
+<table>
+    <tr>
+        <th>Province</th>
+        <th>State</th>
+        <th>Total number of cases</th>
+    </tr>
+    <tr th:each="locationStat : ${modelAttrib}">
+        <td th:text="${locationStat.province}"></td><!--These values are the default-->
+        <td th:text="${locationStat.state}"></td>
+        <td th:text="${locationStat.totalCases}"></td>
+    </tr>
+</table>
+
 </body>
+
 </html>
