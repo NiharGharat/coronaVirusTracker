@@ -6,6 +6,7 @@ thymeleaf
 java version 12
 - > I already have 13
 
+Data fetching
 - a service will go and get request to the url
 https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
 
@@ -19,4 +20,27 @@ Used builders, have a look
 	- @PostConstruct
 	When u construct the class as a service - execute the method of our data
 
+- ISSUE
+	- Wasnt an issue, by needed to manually change the java bytecode version to 13(which I had), in intellij
+	- Was using html type of fetch - default
+	- Needed to use raw in github
+	https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
 
+Data cleanup
+- Use apache openCsv library
+- Create stringReader
+- Use openCsv and give the stringReader to it to make the csvParser
+- Using header names - get the values
+
+Cronning
+- @Scheduled on the method to run
+	- Specify the delay in execution of a cron expression
+	eg - Scheduled(cron = "* * * * * *") -> sec min hr day mon year
+
+- @EnableScheduling on main method spring boot to enable cronning
+
+Issue
+	- Was unable to run every 5 s with 
+	@Scheduled(cron = "5 * * * * *")
+	-> Correct cron exp shd be @Scheduled(cron = "0/5 * * * * *")
+	Run from 0 in increments of 5
