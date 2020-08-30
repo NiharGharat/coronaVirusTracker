@@ -7,20 +7,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" media="all"
           href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
 <body>
 
-<table>
-    <tr>
+<div class="jumbotron">
+    <h1 class="display-4">Total number of cases as of today...</h1>
+    <p th:text="${totalCases}"></p>
+</div>
+
+<table class="list-group">
+    <tr class="list-group-item d-flex justify-content-between align-items-center">
         <th>Province</th>
         <th>State</th>
         <th>Total number of cases</th>
     </tr>
-    <tr th:each="locationStat : ${modelAttrib}">
-        <td th:text="${locationStat.province}"></td><!--These values are the default-->
+    <tr th:each="locationStat : ${modelAttrib}" class="list-group-item d-flex justify-content-between align-items-center">
+        <td th:text="${locationStat.province}" ></td>
         <td th:text="${locationStat.state}"></td>
-        <td th:text="${locationStat.totalCases}"></td>
+        <td th:text="${locationStat.totalCases}" class="badge badge-primary badge-pill"></td>
     </tr>
 </table>
 

@@ -71,12 +71,35 @@ home.html
 <p th:text="#{testName}">Welcome to our grocery store!</p>
 
 - Issue
-- en_GB ...
-	-> <p th:text="${testName}"></p>
+	- en_GB ...
+		-> <p th:text="${testName}"></p>
+
 - AutoWire the service instance in controller
 - Get the List and put it the model - access same way
 - As for rendering -> right now - it will just show list a java array, for correct iterating through the info, use thymeleafy docs - use the iteration section, https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html
-
+eg- 
+<table>
+    <tr>
+        <th>Province</th>
+        <th>State</th>
+        <th>Total number of cases</th>
+    </tr>
+    <tr th:each="locationStat : ${modelAttrib}">
+        <td th:text="${locationStat.province}"></td><!--These values are the default-->
+        <td th:text="${locationStat.state}"></td>
+        <td th:text="${locationStat.totalCases}"></td>
+    </tr>
+</table>
 Issue
 	- Not able to display the numbers -> there was a boolean operator in copied section - remove it
 
+- Shd see the entire list in the web page now
+
+Now, onwards bootstrap :)
+- Go to bootstrap - add bootstrap css link to head in html
+- Use the classes in bootstrap
+- I used list groups and jumbotron for totalCases
+- For totalCases - set it in model as well, use stream and put in the modal.
+- Till now, put the data inside the modal into table, use some bootstrap list group class to beautify the data, the list group is using a pill to display the data.
+- Use Jumbotron to get the total number of cases.
+- SWITCHING ON NEW BRANCH to use container.

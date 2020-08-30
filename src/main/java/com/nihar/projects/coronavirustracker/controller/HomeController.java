@@ -1,10 +1,13 @@
 package com.nihar.projects.coronavirustracker.controller;
 
+import com.nihar.projects.coronavirustracker.model.LocationBean;
 import com.nihar.projects.coronavirustracker.services.CoronaVirusDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 /*
 This is not a rest controller
@@ -23,7 +26,10 @@ public class HomeController {
      */
     @GetMapping(value = "/")
     public String home(Model model) {
-        model.addAttribute("modelAttrib", coronaVirusDataService.getAllStats());
+        List<LocationBean> allStats = coronaVirusDataService.getAllStats();
+        int totalCases = allStats.stream().mapToInt(e -> e.getTotalCases()).sum();
+        model.addAttribute("modelAttrib", allStats);
+        model.addAttribute("totalCases", totalCases);
         return "home";
     }
 
