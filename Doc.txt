@@ -51,3 +51,10 @@ Issue
 - Pop then with data(need only 3 columns - province, state, and current cases)
 - Create a list and then assig that list to the instance list -> If a user req while instance list is being gen - error - hence create a instance list from local one.
 
+Now, create a controller to go to create a web api
+- Dont create a rest controller
+- Issue
+	- unable to see template folder -> switch to package view
+- Create a normal controller - map a url - return String templateName
+- In controller -> response - template.html file => by thymeleaf
+- 

@@ -17,6 +17,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class CoronaVirusDataService {
@@ -32,7 +33,7 @@ public class CoronaVirusDataService {
     private List<LocationBean> allStats = new ArrayList<>();
 
     @PostConstruct
-    @Scheduled(cron = "0/5 * * * * *")
+    @Scheduled(cron = "5 * * * * *")
     private void getDataFromGithub() throws URISyntaxException, IOException, InterruptedException {
         /*
         For cron exp checking in time delays
@@ -59,6 +60,7 @@ public class CoronaVirusDataService {
 
         System.out.println("All done");
         System.out.println(this.allStats.size());
+        System.out.println(this.allStats.get(new Random().nextInt(this.allStats.size())));
     }
 
     /*

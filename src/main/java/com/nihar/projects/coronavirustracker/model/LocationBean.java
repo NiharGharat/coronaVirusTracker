@@ -32,4 +32,13 @@ public class LocationBean {
     public void setTotalCases(int totalCases) {
         this.totalCases = totalCases;
     }
+
+    @Override
+    public String toString() {
+        return "LocationBean{" +
+                "province='" + province + '\'' +
+                ", state='" + state + '\'' +
+                ", totalCases=" + totalCases +
+                '}';
+    }
 }
