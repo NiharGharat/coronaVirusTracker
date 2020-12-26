@@ -1,11 +1,28 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    environment {
+        registry = "NiharGharat/coronaVirusTracker"
+        registryCredential = "dockerpipeline"
+        dockerImage = ""
+    }
+    agent any
     stages {
-        stage('build') {
+        stage('Cloning Git') {
             steps {
-                sh 'mvn --version'
-		sh 'echo "Hello World"'
-		sh 'ls'
+                git 'git@github.com:NiharGharat/coronaVirusTracker.git'
+            }
+        }
+        stage('Building Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build registry + “:$BUILD_NUMBER”
+                }
+            }
+        }
+        stage("Finish") {
+            steps {
+                script {
+                    sh 'ls'
+                }
             }
         }
     }
